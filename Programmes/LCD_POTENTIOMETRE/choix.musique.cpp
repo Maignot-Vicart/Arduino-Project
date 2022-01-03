@@ -329,161 +329,161 @@ void musiqueBestOf(){
 void lireMusiqueRock{
 
   if (numeroMusique==1){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0101);
   }
 
   if (numeroMusique==2){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0102);
   }
 
   if (numeroMusique==3){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0103);
   }
 
   if (numeroMusique==4){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0104);
   }
 
   if (numeroMusique==5){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0105);
   }
 
   if (numeroMusique==6){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0106);
   }
 }
 
 void lireMusiquePop{
 
   if (numeroMusique==1){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0201);
   }
 
   if (numeroMusique==2){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0202);
   }
 
   if (numeroMusique==3){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0203);
   }
 
   if (numeroMusique==4){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0204);
   }
 
   if (numeroMusique==5){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0205);
   }
 
   if (numeroMusique==6){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0206);
   }
 }
 
 void lireMusiqueDisco{
 
   if (numeroMusique==1){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0301);
   }
 
   if (numeroMusique==2){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0302);
   }
 
   if (numeroMusique==3){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0303);
   }
 
   if (numeroMusique==4){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0304);
   }
 
   if (numeroMusique==5){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0305);
   }
 
   if (numeroMusique==6){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0306);
   }
 }
 
 void lireMusiqueMovie{
 
   if (numeroMusique==1){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0401);
   }
 
   if (numeroMusique==2){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0402);
   }
 
   if (numeroMusique==3){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0403);
   }
 
   if (numeroMusique==4){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0404);
   }
 
   if (numeroMusique==5){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0405);
   }
 
   if (numeroMusique==6){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0406);
   }
 }
 
 void lireMusiqueArcade{
 
   if (numeroMusique==1){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0501);
   }
 
   if (numeroMusique==2){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0502);
   }
 
   if (numeroMusique==3){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0503);
   }
 
   if (numeroMusique==4){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0504);
   }
 
   if (numeroMusique==5){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0505);
   }
 
   if (numeroMusique==6){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0506);
   }
 }
 
 void lireMusiqueBestOf{
 
   if (numeroMusique==1){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0601);
   }
 
   if (numeroMusique==2){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0602);
   }
 
   if (numeroMusique==3){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0603);
   }
 
   if (numeroMusique==4){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0604);
   }
 
   if (numeroMusique==5){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0605);
   }
 
   if (numeroMusique==6){
-    
+    sendCommand(CMD_PLAY_WITHFOLDER, 0X0606);
   }
 }
