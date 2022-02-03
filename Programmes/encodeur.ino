@@ -4,14 +4,18 @@
 
 #define RX 12
 #define TX 13
-const int sw = 7; //pour le bouton
+const int sw = 7; //pour le bouton de l'encodeur
 const int dt = 3;
 const int clk = 2;
+const int An = A0; // pour le capteur
+const int Dig = 8; // pour le capteur
+
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 SoftwareSerial mySerial(RX,TX);
 
-
+int value_A0 = 0;
+int value_D0 = 0;
 int valBoutonGenre = 0;
 int ancien_valBoutonGenre = 0;
 int etat_bouton_genre = 0;
@@ -52,6 +56,8 @@ void setup() {
   mySerial.begin(9600);
   pinMode(dt, INPUT);
   pinMode(clk, INPUT);
+  pinMode(An, INPUT);
+  pinMode(Dig, INPUT);
   Serial.begin(9600);
   lcd.init();
   lcd.backlight();
@@ -64,126 +70,139 @@ void setup() {
 
 void loop() {
   
-  while (etat_bouton_genre==LOW){
-    
-    if (compteur==ancien_compteur){
-      Serial.println("même genre");
-    }
-    else{
-      lcd.clear();
-    }
-    
-    ancien_compteur=compteur;
-    
-    Serial.println(compteur);
-    delay(100);
-    
-    if ((compteur==0)){
-      lcd.setCursor(6,0);
-      lcd.print("ROCK");
-      numeroGenre = 0;
-    }
-    else if ((compteur==1)){
-      lcd.setCursor(6,0);
-      lcd.print("POP");
-      numeroGenre = 1;
-    }
-    else if ((compteur==2)){
-      lcd.setCursor(5,0);
-      lcd.print("DISCO");
-      numeroGenre = 2;
-    }
-    else if (compteur==3){
-      lcd.setCursor(2,0);
-      lcd.print("80'S MOVIES");
-      numeroGenre = 3;
-    }
-    else if (compteur==4){
-      lcd.setCursor(5,0);
-      lcd.print("ARCADE");
-      numeroGenre = 4;
-    }
-    else if (compteur==5){
-      lcd.setCursor(2,0);
-      lcd.print("80'S BEST OF");
-      numeroGenre = 5;
-    }
-    
-    valBoutonGenre = digitalRead(sw);
 
-    if ((valBoutonGenre==LOW)&&(ancien_valBoutonGenre==HIGH)){
-      etat_bouton_genre=1-etat_bouton_genre;
-      delay(20);
-    }
-
-    ancien_valBoutonGenre = valBoutonGenre;
- }
- 
+  value_A0 = analogRead(An);
   
- Serial.println("bouton OK GENRE");
-  
- while (etat_bouton_musique==LOW){
-    
-   if (compteur2==ancien_compteur2){
-     Serial.println("même musique");
-   }
-   else{
-     lcd.clear();
-   }
-    
-   ancien_compteur2=compteur2;
-    
-   Serial.println(compteur2);
-   delay(100);
-    
-   if (numeroGenre==0){
-     musiqueRock();
-   }
-   else if (numeroGenre==1){
-     musiquePop();
-   }
-   else if ((numeroGenre==2)){
-     musiqueDisco();
-   }
-   else if (numeroGenre==3){
-     musiqueMovie();
-   }
-   else if (numeroGenre==4){
-     musiqueArcade();
-   }
-   else if (numeroGenre==5){
-     musiqueBestOf();
-   }
-    
-   valBoutonMusique = digitalRead(sw);
-
-   if ((valBoutonMusique==LOW)&&(ancien_valBoutonMusique==HIGH)){
-     etat_bouton_musique=1-etat_bouton_musique;
-     delay(20);
-   }
-
-   ancien_valBoutonMusique = valBoutonMusique;
+  while (value_A0 > 600){
+    lcd.setCursor(1,0);
+    lcd.print("INSERER PIECE");
+    delay(1000);
+    value_A0 = analogRead(An);
   }
-  Serial.println("bouton OK MUSIQUE");
 
-  if (numeroGenre==0){
-     lireMusiqueRock();
+  if (value_A0 < 100){
+  
+    while (etat_bouton_genre==LOW){
+      
+      if (compteur==ancien_compteur){
+        Serial.println("même genre");
+      }
+      else{
+        lcd.clear();
+      }
+      
+      ancien_compteur=compteur;
+      
+      Serial.println(compteur);
+      delay(100);
+      
+      if ((compteur==0)){
+        lcd.setCursor(6,0);
+        lcd.print("ROCK");
+        numeroGenre = 0;
+      }
+      else if ((compteur==1)){
+        lcd.setCursor(6,0);
+        lcd.print("POP");
+        numeroGenre = 1;
+      }
+      else if ((compteur==2)){
+        lcd.setCursor(5,0);
+        lcd.print("DISCO");
+        numeroGenre = 2;
+      }
+      else if (compteur==3){
+        lcd.setCursor(2,0);
+        lcd.print("80'S MOVIES");
+        numeroGenre = 3;
+      }
+      else if (compteur==4){
+        lcd.setCursor(5,0);
+        lcd.print("ARCADE");
+        numeroGenre = 4;
+      }
+      else if (compteur==5){
+        lcd.setCursor(2,0);
+        lcd.print("80'S BEST OF");
+        numeroGenre = 5;
+      }
+      
+      valBoutonGenre = digitalRead(sw);
+  
+      if ((valBoutonGenre==LOW)&&(ancien_valBoutonGenre==HIGH)){
+        etat_bouton_genre=1-etat_bouton_genre;
+        delay(20);
+      }
+  
+      ancien_valBoutonGenre = valBoutonGenre;
    }
-   else if (numeroGenre==1){
-     lireMusiquePop();
-   }
-   else if ((numeroGenre==2)){
-     lireMusiqueDisco();
-   }
-   else if (numeroGenre==3){
-     lireMusiqueMovie();
-   }
-   else if (numeroGenre==4){
-     lireMusiqueArcade();
-   }
-   else if (numeroGenre==5){
-     lireMusiqueBestOf();
-   }
+   
+    
+   Serial.println("bouton OK GENRE");
+    
+   while (etat_bouton_musique==LOW){
+      
+     if (compteur2==ancien_compteur2){
+       Serial.println("même musique");
+     }
+     else{
+       lcd.clear();
+     }
+      
+     ancien_compteur2=compteur2;
+      
+     Serial.println(compteur2);
+     delay(100);
+      
+     if (numeroGenre==0){
+       musiqueRock();
+     }
+     else if (numeroGenre==1){
+       musiquePop();
+     }
+     else if ((numeroGenre==2)){
+       musiqueDisco();
+     }
+     else if (numeroGenre==3){
+       musiqueMovie();
+     }
+     else if (numeroGenre==4){
+       musiqueArcade();
+     }
+     else if (numeroGenre==5){
+       musiqueBestOf();
+     }
+      
+     valBoutonMusique = digitalRead(sw);
+  
+     if ((valBoutonMusique==LOW)&&(ancien_valBoutonMusique==HIGH)){
+       etat_bouton_musique=1-etat_bouton_musique;
+       delay(20);
+     }
+  
+     ancien_valBoutonMusique = valBoutonMusique;
+    }
+    Serial.println("bouton OK MUSIQUE");
+  
+    if (numeroGenre==0){
+       lireMusiqueRock();
+     }
+     else if (numeroGenre==1){
+       lireMusiquePop();
+     }
+     else if ((numeroGenre==2)){
+       lireMusiqueDisco();
+     }
+     else if (numeroGenre==3){
+       lireMusiqueMovie();
+     }
+     else if (numeroGenre==4){
+       lireMusiqueArcade();
+     }
+     else if (numeroGenre==5){
+       lireMusiqueBestOf();
+     }
+  }
 
 }
 
