@@ -2,8 +2,8 @@
 #include <LiquidCrystal_I2C.h>
 #include <SoftwareSerial.h>
 
-#define RX 12
-#define TX 13
+#define RX_SON 12
+#define TX_SON 13
 const int sw = 7; //pour le bouton de l'encodeur
 const int dt = 3;
 const int clk = 2;
@@ -12,7 +12,7 @@ const int Dig = 8; // pour le capteur
 
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
-SoftwareSerial mySerial(RX,TX);
+SoftwareSerial mySerial(RX_SON,TX_SON);
 
 int value_A0 = 0;
 int value_D0 = 0;
@@ -69,19 +69,21 @@ void setup() {
 }
 
 void loop() {
-  
+  lcd.clear();
 
   value_A0 = analogRead(An);
   
   while (value_A0 > 600){
     lcd.setCursor(1,0);
     lcd.print("INSERER PIECE");
+    lcd.setCursor(0,1);
+    lcd.print("ET CHOISIR GENRE");
     delay(1000);
     value_A0 = analogRead(An);
   }
 
-  if (value_A0 < 100){
-  
+  while (value_A0 < 100){
+    lcd.clear();
     while (etat_bouton_genre==LOW){
       
       if (compteur==ancien_compteur){
@@ -201,9 +203,26 @@ void loop() {
      }
      else if (numeroGenre==5){
        lireMusiqueBestOf();
-     }
+     } 
+     
+
+    value_A0 = analogRead(An);
+    
+    lcd.clear(); 
+    while (value_A0 < 100){
+      lcd.setCursor(0,0);
+      lcd.print("RETIRER PIECE");
+      value_A0 = analogRead(An);
+    }
   }
 
+  
+  
+  etat_bouton_musique = 0;
+  etat_bouton_genre = 0;
+  ancien_valBoutonGenre = 0;
+  ancien_valBoutonMusique = 0;
+  
 }
 
 
