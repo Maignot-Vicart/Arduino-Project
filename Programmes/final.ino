@@ -251,7 +251,7 @@ void loop() {
 
 
 void genre(){
-  if (abs(millis()-tempsA) > 100){
+  if (abs(millis()-tempsA) > 140){
     if (dt) {
       compteur++;
       if (compteur>5){
@@ -269,7 +269,7 @@ void genre(){
 }
 
 void musique(){
-  if (abs(millis()-tempsB) > 100){
+  if (abs(millis()-tempsB) > 140){
     if (dt) {
       compteur2++;
       if (compteur2>5){
