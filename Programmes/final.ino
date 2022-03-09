@@ -235,6 +235,8 @@ void loop() {
     lcd.clear(); 
     while (value_A0 < 100){
       lcd.setCursor(0,0);
+      lcd.print("FIN MORCEAU :");
+      lcd.setCursor(0,1);
       lcd.print("RETIRER PIECE");
       value_A0 = analogRead(An);
     }
@@ -251,7 +253,7 @@ void loop() {
 
 
 void genre(){
-  if (abs(millis()-tempsA) > 140){
+  if (abs(millis()-tempsA) > 130){
     if (dt) {
       compteur++;
       if (compteur>5){
@@ -269,7 +271,7 @@ void genre(){
 }
 
 void musique(){
-  if (abs(millis()-tempsB) > 140){
+  if (abs(millis()-tempsB) > 130){
     if (dt) {
       compteur2++;
       if (compteur2>5){
